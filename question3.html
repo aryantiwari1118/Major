@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="text/javascript" href="questions.js" />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <title>Question Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        .navbar {
+            background-color: #3f51b5;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            color: #fff;
+        }
+        
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question h2 {
+            color: #3f51b5;
+        }
+
+        .question img {
+            max-width: 100%;
+            max-height: 100%;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .letter {
+            font-size: 24px;
+            cursor: pointer;
+            display: inline-block;
+            margin: 10px;
+        }
+        .answer-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #3f51b5;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .answer-button:hover {
+            background-color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active"> 
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+           </ul>
+          </div>
+    </nav>   
+
+    <div class="content">
+        <div class="question">
+            <h2>Question 3</h2>
+            <p>Subject has to repeat them in the forward order , Subject has to repeat them in the backward order</p>
+            <img src="Question3.png" alt="Question Image" id="question3">
+        </div>
+        <form id="FormId">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Type your answers here:</label><br><br>
+            <input type="number" class="form-control" id="exampleInputtext1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">Write the answers seperated by one white/back space</div>
+          </div>
+          <p>Read list of letters. The subject must hover with the virtual mouse at each letter A. No points if ≥ 2 errors.</p>
+            <div class="letter" id="F">F</div>
+            <div class="letter" id="B">B</div>
+            <div class="letter" id="M">M</div>
+            <div class="letter" id="N">N</div>
+            <div class="letter" id="A">A</div>
+            <div class="letter" id="A">A</div>
+            <div class="letter" id="J">J</div>
+            <div class="letter" id="K">K</div>
+            <div class="letter" id="L">L</div>
+            <div class="letter" id="B">B</div>
+            <div class="letter" id="A">A</div>
+            <div class="letter" id="F">F</div>
+            <div class="letter" id="A">A</div>
+            <div class="letter" id="K">K</div>
+            <div class="letter" id="D">D</div>
+            <div class="letter" id="A">A</div>
+            <div class="letter" id="A">A</div>
+            <div class="letter" id="A">A</div>
+
+            <div id="countDisplay"></div>
+
+            <div class="question">
+                <!-- <h2>Question 3</h2> -->
+                <p>Subject has to repeat them in the forward order , Subject has to repeat them in the backward order</p>
+                <img src="Question4.png" alt="Question Image" id="question4"><br><br>
+                <label for="exampleInputEmail1" class="form-label">Type your answers here:</label><br><br>
+                <input type="number" class="form-control" id="exampleInputtext1" aria-describedby="emailHelp">
+            </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <input class="btn btn-primary" type="reset" value="Reset">
+          <a class="btn btn-primary" href="question4.html" id="nextButton" >Next</a>
+
+          <!-- div to count the other letters  -->
+          <div id="otherLettersCountContainer" style="margin-top: 20px;">
+            Count for other letters: <span id="otherLetterCount">0</span>
+        </div>
+        </form>
+    </div>
+    <script>
+        // Function to hide the image
+        /* function hideImage() {
+            var image = document.getElementById("question2");
+            image.style.display = "none";
+        }
+        
+        function showImage()
+        {
+            var image=document.getElementById("question2");
+            image.style.display = "inline";
+        }
+        function hideElements() {
+            var inputElement = document.getElementById("exampleInputtext2");
+            inputElement.style.display="none";
+            // var buttonElement = document.getElementById("myButton");
+
+            // Disable the input element
+
+            // Disable the button
+            // buttonElement.disabled = true;
+
+            // Change the label text
+            var labelElement1 = document.querySelector('label[for="exampleInputEmail1"]');
+            var labelElement2 = document.querySelector('label[for="exampleInputEmail2"]');
+            var labelElement3 = document.querySelector('label[for="exampleInputEmail3"]');
+            labelElement1.innerText = "First answer:";
+            labelElement2.innerText = "";
+            labelElement2.innerText = "";
+        } 
+
+
+
+
+
+        var interval1 = 10000; 
+        var interval2 = 300000; 
+
+        setTimeout(hideImage, interval1);
+        setTimeout(hideElements, interval1);
+        setTimeout(showImage, interval2); */
+
+        var letterCounts = { 'A': 0 };
+        var otherLetterCount = 0;
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to update count and display
+            function updateCount(letter) {
+                if (!letterCounts[letter]) {
+                    letterCounts[letter] = 1;
+                } else {
+                    letterCounts[letter]++;
+                }
+
+                if (letter !== 'A') {
+                    otherLetterCount++;
+                    // update count for other letters
+                    var otherLetterCountDisplay = document.getElementById("otherLetterCount");
+                    otherLetterCountDisplay.innerText = otherLetterCount;
+                }
+
+                var countDisplay = document.getElementById("countDisplay");
+                countDisplay.innerText = "Count for A: " + letterCounts['A'];
+
+                /*if (letter === 'A' && letterCounts[letter] >= 2) {
+                    alert('Error: More than 2 hovers on letter A. Reloading the page.');
+                    location.reload(); // Reload the page
+                }*/
+
+                if (otherLetterCount > 4) {
+                    alert('Error: More than 4 hovers on other letters. Reloading the page.');
+                    location.reload(); // Reload the page
+                }
+            }
+
+            // Add event listeners for hover
+            var letters = document.getElementsByClassName("letter");
+            for (var i = 0; i < letters.length; i++) {
+                letters[i].addEventListener("mouseover", function () {
+                    var letter = this.innerText;
+                    updateCount(letter);
+                });
+            }
+        });
+
+
+
+        //javascipt to validate the inputs 
+        // Function to check if any input is empty
+        function checkInputs(event) {
+            var input1 = document.getElementById("exampleInputtext1").value;
+
+            if (input1.trim() === '') {
+                // If input is empty, show an alert message and prevent the default button behavior
+                alert("Please fill in all the input boxes.");
+                event.preventDefault();
+            }
+            // Otherwise, let the default button behavior proceed
+        }
+
+        // Add an event listener to the "Next" button
+        var nextButton = document.getElementById("nextButton"); // Replace with the actual ID of your "Next" button
+        if (nextButton) {
+            nextButton.addEventListener("click", function (event) {
+                // Call the checkInputs function before proceeding
+                checkInputs(event);
+            });
+        }
+
+         
+</script>
+
+        
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

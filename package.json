@@ -1,0 +1,15 @@
+{
+  "name": "major-project",
+  "version": "1.0.0",
+  "description": "Screenshot clicker",
+  "main": "question3.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anupam Gupta Roy",
+  "license": "ISC",
+  "dependencies": {
+    "desktop-screenshot": "^0.1.1",
+    "puppeteer": "^21.6.1"
+  }
+}
